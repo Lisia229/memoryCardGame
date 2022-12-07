@@ -15,7 +15,7 @@ for (let i = 0; i < 10; i++) {
 for (let i = 0; i < $('.card').length; i++) {
   // 決定數字
   const num = i % ($('.card').length / 2) + 1
-  $('.card').eq(i).find('.card-front').css('background-image', `url(./images/${num}M.jpg)`)
+  $('.card').eq(i).find('.card-front').css('background-image', `url(../images/${num}M.jpg)`)
   $('.card').eq(i).attr('data-num', num)
 
   // 打散
@@ -39,7 +39,7 @@ $('#gamecontent').on('click', '.card', function () {
     if ($('.card:not(.card-close)').eq(0).attr('data-num') === $('.card:not(.card-close)').eq(1).attr('data-num')) {
       // 用 card-ok 標記已完成
       $('.card:not(.card-close)').addClass('card-ok')
-      $('.card:not(.card-close)').fadeTo(1000, 0)
+      $('.card:not(.card-close)').fadeTo(1000, 0.4)
     }
 
     // 不管數字一不一樣都將卡片翻回來
@@ -51,6 +51,7 @@ $('#gamecontent').on('click', '.card', function () {
           title: '恭喜過關',
           text: `總共移動了${score}步`
         }).then(() => {
+          $('.card').fadeTo(0,0)
           $(".mask").show();
         })
       }
